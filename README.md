@@ -1,4 +1,6 @@
-How to install:
+How to install
+==============
+
 1. Copy ThePoser folder into plugins folder
 2. Open Mantis with browser
 3. Log in as administrator
@@ -6,7 +8,9 @@ How to install:
 5. Find ThePoser in the list
 6. Click Install
 
-License:
+
+Licence
+=======
 
 The MIT License (MIT)
 
@@ -29,5 +33,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
