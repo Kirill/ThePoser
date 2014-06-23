@@ -6,7 +6,7 @@ How to install:
 5. Find ThePoser in the list
 6. Click Install
 
-Licence:
+License:
 
 The MIT License (MIT)
 
