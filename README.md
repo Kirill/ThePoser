@@ -8,6 +8,7 @@ How to install
 5. Find ThePoser in the list
 6. Click Install
 
+![Screenshot](screenshot.png?raw=true)
 
 Licence
 =======
