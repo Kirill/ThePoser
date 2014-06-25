@@ -1,0 +1,14 @@
+.mantisLogo, .poserHeader {
+    display: none;
+}
+
+
+.tinyheader {
+    display: block !important;
+    float: left;
+    line-height: 0px;
+}
+.tinyheader span {
+    position: relative;
+    top: -3px;
+}

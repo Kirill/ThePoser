@@ -1,5 +1,11 @@
+Features
+--------
+1. Overall changes of mantis look
+2. Custom company logo, company name and link to main website (will open in new window)
+3. 3 different styles for header - Default (big logos), Small, And Tiny (see screenshots below)
+
 How to install
-==============
+--------------
 
 1. Copy ThePoser folder into plugins folder
 2. Open Mantis with browser
@@ -8,14 +14,16 @@ How to install
 5. Find ThePoser in the list
 6. Click Install
 
+![Screenshot](header2.png?raw=true)
+![Screenshot](header1.png?raw=true)
 ![Screenshot](screenshot.png?raw=true)
 
 Licence
-=======
+-------
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Agave Storm Inc. Canada, Toronto
+Copyright (c) 2014 [Agave Storm Inc. Canada, Toronto](http://agavestorm.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
