@@ -1,7 +1,8 @@
 <?php
 form_security_validate( 'plugin_Example_config_update' );
 
-$f_foo_or_bar = gpc_get_string( 'headerHeight' );
+$f_header = gpc_get_string( 'headerHeight' );
+$f_skin = gpc_get_string( 'skin' );
 $f_reset = gpc_get_bool( 'reset', false );
 $f_resetLogo = gpc_get_bool( 'reset_logo', false );
 $f_resetTinyLogo = gpc_get_bool( 'reset_tiny_logo', false );
@@ -14,13 +15,17 @@ if($f_resetTinyLogo) {
 }
 if ( $f_reset ) {
     plugin_config_delete( 'headerHeight' );
+    plugin_config_delete( 'skin' );
     plugin_config_delete('companyName');
     plugin_config_delete('companyUrl');
     plugin_config_delete('companyLogo');
     plugin_config_delete('companyTinyLogo');
 } else {
-    if ( in_array($f_foo_or_bar,array(0,1,2))) {
-        plugin_config_set( 'headerHeight', $f_foo_or_bar );
+    if ( in_array($f_header,array(0,1,2))) {
+        plugin_config_set( 'headerHeight', $f_header );
+    }
+    if ( in_array($f_skin,array(0,1,2))) {
+        plugin_config_set( 'skin', $f_skin );
     }
     plugin_config_set('companyName', strip_tags(gpc_get_string('companyName')));
     plugin_config_set('companyUrl', strip_tags(gpc_get_string('companyUrl')));

@@ -1,5 +1,5 @@
 body {
-    background: url(plugins/ThePoser/files/img/bgmain.png) !important;
+    background: url(plugins/ThePoser/files/img/bgmain.png);
     color: #333;
 }
 
@@ -113,4 +113,9 @@ div.poserWarning {
     margin: 20px;
     padding: 20px;
     border: 2px solid #faced0;
+}
+
+.poserConfig {
+    width: 90%;
+    margin: 30px auto;
 }

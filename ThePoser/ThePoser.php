@@ -98,9 +98,11 @@ class ThePoserPlugin extends MantisPlugin {
     
     function initlook($p_event) {
 	    $header = plugin_config_get('headerHeight');
+	    $skin = plugin_config_get('skin');
         ?>
         <link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'main.css' ); ?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'header-'.$header.'.css' ); ?>"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'skin-'.$skin.'.css' ); ?>"/>
         <?php
     }
     

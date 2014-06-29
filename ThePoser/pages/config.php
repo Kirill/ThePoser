@@ -1,9 +1,12 @@
 <?php
 $headerHeightOptions = array('Default', 'Small', 'Tiny');
-$current = plugin_config_get('headerHeight');
+$skinOptions = array('poser Default', 'Flat');
+$currentHeader = plugin_config_get('headerHeight');
+$currentSkin = plugin_config_get('skin');
 html_page_top();
 ThePoserPlugin::showImagickWarning();
 ?>
+<div class="poserConfig">
 <form action="<?php echo plugin_page( 'config_update' ) ?>" method="post" enctype="multipart/form-data">
 <?php echo form_security_field( 'plugin_Example_config_update' ) ?>
 
@@ -12,7 +15,21 @@ ThePoserPlugin::showImagickWarning();
 		<?php foreach($headerHeightOptions as $key=>$value) {
 			?>
 		<option value="<?php echo $key; ?>"
-			<?php if($key == $current) {
+			<?php if($key == $currentHeader) {
+				?> selected="yes"<?php
+			} ?>
+			><?php echo $value; ?></option>
+			<?php
+		}?>
+	</select>
+	<br/>
+	
+	<label>Skin</label>
+	<select name="skin">
+		<?php foreach($skinOptions as $key=>$value) {
+			?>
+		<option value="<?php echo $key; ?>"
+			<?php if($key == $currentSkin) {
 				?> selected="yes"<?php
 			} ?>
 			><?php echo $value; ?></option>
@@ -52,6 +69,7 @@ ThePoserPlugin::showImagickWarning();
 <input type="submit"/>
 
 </form>
+</div>
 <?php
 
 html_page_bottom();
