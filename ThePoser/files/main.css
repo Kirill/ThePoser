@@ -84,11 +84,19 @@ td.category, .row-category>td {
     padding-top: 6px;
     padding-bottom: 0;
 }
+.poserHeader.poserNoAuth {
+    float: none;
+    text-align: right;
+    display: block;
+}
 .poserHeader a {
     display: table-cell;
     
     vertical-align: middle;
     height: 80px;
+}
+.poserHeader.poserNoAuth a{
+    display: block;
 }
 .poserHeader a img {
     /*vertical-align: middle;*/
@@ -96,4 +104,13 @@ td.category, .row-category>td {
 }
 div.mantisLogo {
     padding: 0;
+}
+div.mantisLogo.poserNoAuth {
+    margin-top: -80px;
+}
+
+div.poserWarning {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #faced0;
 }

@@ -49,8 +49,11 @@ class ThePoserPlugin extends MantisPlugin {
     
     function bodyBegin($p_event) {
 	if(plugin_config_get('headerHeight') != '2') {
+		if(!auth_is_user_authenticated()) {
+			$classes = 'poserNoAuth';
+		}
 	?>
-	<div class="poserHeader">
+	<div class="poserHeader <?php echo $classes; ?>">
 		<a href="<?php echo plugin_config_get('companyUrl');?>" title="<?php echo plugin_config_get('companyName'); ?>" target="_blank">
 			<?php 
 			$imgdata = plugin_config_get('companyLogo');
@@ -63,7 +66,7 @@ class ThePoserPlugin extends MantisPlugin {
 		</a>
 	</div>
 	<?php } ?>
-	<div class="mantisLogo">
+	<div class="mantisLogo <?php echo $classes; ?>">
 	<?php
     }
     
@@ -77,19 +80,19 @@ class ThePoserPlugin extends MantisPlugin {
 	    }
 	    $favicon = helper_mantis_url(config_get( 'favicon_image' ));
 	    $companyName = plugin_config_get('companyName');
+	    $imgdata = plugin_config_get('companyTinyLogo');
 	    ?>
 	    <span  class="tinyheader">
 		<a href="<?php echo helper_mantis_url('my_view_page.php'); ?>">
 			<img src="<?php echo $favicon; ?>"/>
-			<?php
-			if(!empty($companyName)) {
-				?>
-			<span>: <?php echo $companyName; ?></span>
-				<?php
-			}
-			?></a>
+		</a>
 		
 	    </span>
+		<span class="tinyheader-right">
+			<a href="<?php echo plugin_config_get('companyUrl');?>" title="<?php echo plugin_config_get('companyName'); ?>" target="_blank">
+				<img src="<?php echo $imgdata;?>" alt="<?php echo plugin_config_get('companyName'); ?>"/>
+			</a>
+		</span>
 	<?php
     }
     
@@ -108,6 +111,41 @@ class ThePoserPlugin extends MantisPlugin {
 	    'companyName' => 'setup you company name and logo',
 	    'companyUrl' => plugin_page('config'),
 	    'companyLogo' => '',
+	    'companyTinyLogo' => '',
         );
+    }
+    
+    function showImagickWarning() {
+	    if(!class_exists('Imagick')) {
+		    ?>
+	<div class="poserWarning">
+		Image Magick not found, auto resize for uploaded images won't work. Please, install and activate php-imagick or php-pecl-imagick extension.
+	</div>
+		<?php
+	    }
+    }
+    
+    function getImageForSaving($file, $size) {
+		if(empty($file['tmp_name'])) {
+			throw new Exception('no file');
+		}
+		$uploaded = $file['tmp_name'];
+		$filecontent = 'data:'.$file['type'].';base64,'.base64_encode(self::resizeImage($uploaded,$size,$file['type']));
+		return $filecontent;
+    }
+    
+    function resizeImage($filename, $size, $mime) {
+	    if(!class_exists('Imagick')) {
+		return file_get_contents($filename);
+	    }
+	    $format = str_replace('image/','',$type);
+	    $width = $size[0];
+	    $height = $size[1];
+	    $image = file_get_contents($filename);
+	    $canvas = new Imagick();
+		$canvas->readImageBlob($image);
+		$canvas->setImageFormat(str_replace('image/','',$mime));
+		$canvas->thumbnailImage($width, $height);
+		return $canvas->getImageBlob();
     }
 }

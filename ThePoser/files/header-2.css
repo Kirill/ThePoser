@@ -12,3 +12,15 @@
     position: relative;
     top: -3px;
 }
+
+td[class="menu right nowrap"] {
+    /*padding-right: 20px;*/
+}
+.login-info-right {
+    padding-right: 20px !important;
+}
+.tinyheader-right {
+    position: absolute;
+    right: 8px;
+    top: 1em;
+}
