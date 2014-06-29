@@ -1,6 +1,6 @@
 <?php
 $headerHeightOptions = array('Default', 'Small', 'Tiny');
-$skinOptions = array('poser Default', 'Flat');
+$skinOptions = array('poser Default', 'Flat','MantisMan');
 $currentHeader = plugin_config_get('headerHeight');
 $currentSkin = plugin_config_get('skin');
 html_page_top();

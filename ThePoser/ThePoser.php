@@ -48,9 +48,19 @@ class ThePoserPlugin extends MantisPlugin {
     }
     
     function bodyBegin($p_event) {
+	$classes ='';
+	if(plugin_config_get('skin') == 2) {
+	    $this->theCity();
+	}
 	if(plugin_config_get('headerHeight') != '2') {
 		if(!auth_is_user_authenticated()) {
-			$classes = 'poserNoAuth';
+			$classes .= ' poserNoAuth';
+		}
+		if(plugin_config_get('headerHeight') == '1') {
+			$classes .=' poserSmallHeader';
+		}
+		if(plugin_config_get('headerHeight') == '2') {
+			$classes .=' poserTinyHeader';
 		}
 	?>
 	<div class="poserHeader <?php echo $classes; ?>">
@@ -147,7 +157,69 @@ class ThePoserPlugin extends MantisPlugin {
 	    $canvas = new Imagick();
 		$canvas->readImageBlob($image);
 		$canvas->setImageFormat(str_replace('image/','',$mime));
-		$canvas->thumbnailImage($width, $height);
+		if($canvas->getImageHeight() > $height) {
+			$canvas->thumbnailImage($width, $height);
+		}
 		return $canvas->getImageBlob();
+    }
+    
+    function theCity() {
+	    $classes = '';
+	    if(plugin_config_get('headerHeight') == '2') {
+			$classes .=' poserTinyHeader';
+		}
+	    $buildings = $_SESSION['buildings'];
+	    if(empty($buildings)) {
+		$countBuildings = 800;
+		for($i=0;$i<$countBuildings;$i++) {
+			$buildings[] = array(
+			    'height' => rand(10,100),
+			    'width' => rand(5,50),
+			);
+		}
+		$_SESSION['buildings'] = $buildings;
+	    }
+	    
+	    $stars = $_SESSION['stars'];
+	    if(empty($stars)) {
+		    $stars = array();
+		$countStars = 1000;
+		for($i=0;$i<$countStars;$i++) {
+			$stars[] = array(
+			    'x' => rand(1,3000),
+			    'y' => rand(1,200),
+			    'r'=>rand(200,255),
+			    'g'=>rand(200,255),
+			    'b'=>rand(200,255),
+			    'opacity'=>rand(10,100)/100,
+			);
+		}
+		$_SESSION['stars'] = $stars;
+	    }
+	    
+	    ?>
+	<div class="stars-container">
+		<?php foreach($stars as $star) {
+			?>
+		<div class="star" style=" 
+		     left:<?php echo $star['x'];?>px;
+		     top:<?php echo $star['y'];?>px;
+		     background: rgba(<?php echo $star['r'].','.$star['g'].','.$star['b'].','.$star['opacity'];?>);
+		     "></div>
+			<?php
+		}?>
+		<div class="star-hider"></div>
+	</div>
+	<div class="building-container <?php echo $classes;?>">
+		<?php foreach($buildings as $building) {
+			?>
+		<div class="building buildingGradient" style="
+		     height: <?php echo $building['height'];?>px; 
+		     margin-top: <?php echo 100-$building['height'];?>px;
+		     width: <?php echo $building['width'];?>px;"></div>
+			<?php
+		}?>
+	</div>
+		<?php
     }
 }
