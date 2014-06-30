@@ -126,6 +126,7 @@ class ThePoserPlugin extends MantisPlugin {
 	    'companyLogo' => '',
 	    'companyTinyLogo' => '',
 	    'customCss' => '',
+	    'skin'=>0,
         );
     }
     
