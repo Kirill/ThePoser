@@ -120,6 +120,7 @@ class ThePoserPlugin extends MantisPlugin {
     function config() {
         return array(
             'customLogo' => '',
+	    'skin' => 0,
 	    'headerHeight' => 0,// default=0, small=1, tiny=2
 	    'companyName' => 'setup you company name and logo',
 	    'companyUrl' => plugin_page('config'),
