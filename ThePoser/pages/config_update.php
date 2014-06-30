@@ -20,6 +20,7 @@ if ( $f_reset ) {
     plugin_config_delete('companyUrl');
     plugin_config_delete('companyLogo');
     plugin_config_delete('companyTinyLogo');
+    plugin_config_delete('customCss');
 } else {
     if ( in_array($f_header,array(0,1,2))) {
         plugin_config_set( 'headerHeight', $f_header );
@@ -30,7 +31,6 @@ if ( $f_reset ) {
     plugin_config_set('companyName', strip_tags(gpc_get_string('companyName')));
     plugin_config_set('companyUrl', strip_tags(gpc_get_string('companyUrl')));
     
-//    $file = ;
     try {
     plugin_config_set('companyLogo',
 	    ThePoserPlugin::getImageForSaving(gpc_get_file('customLogo'), 
@@ -44,23 +44,8 @@ if ( $f_reset ) {
 		    array(16, 16)
 		    ));
     } catch(Exception $e) {}
-   // exit;
-//    if(!empty($file['tmp_name'])) {
-////	    var_dump($file);
-//	$uploaded = $file['tmp_name'];
-//	$filecontent = 'data:'.$file['type'].';base64,'.base64_encode(file_get_contents($uploaded));
-////	var_dump($filecontent); exit;
-//	plugin_config_set('companyLogo', $filecontent);
-//    }
-//    
-//    $file = gpc_get_file('customTinyLogo');
-//    if(!empty($file['tmp_name'])) {
-////	    var_dump($file);
-//	$uploaded = $file['tmp_name'];
-//	$filecontent = 'data:'.$file['type'].';base64,'.base64_encode(file_get_contents($uploaded));
-////	var_dump($filecontent); exit;
-//	plugin_config_set('companyTinyLogo', $filecontent);
-//    }
+
+    plugin_config_set('customCss',gpc_get_string('customCss'));
 }
 
 form_security_purge( 'plugin_Example_config_update' );

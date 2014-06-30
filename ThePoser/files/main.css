@@ -119,3 +119,8 @@ div.poserWarning {
     width: 90%;
     margin: 30px auto;
 }
+.poserConfig textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+}

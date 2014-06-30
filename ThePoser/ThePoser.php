@@ -113,6 +113,7 @@ class ThePoserPlugin extends MantisPlugin {
         <link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'main.css' ); ?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'header-'.$header.'.css' ); ?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo plugin_file( 'skin-'.$skin.'.css' ); ?>"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo plugin_page( 'css' ); ?>"/>
         <?php
     }
     
@@ -124,6 +125,7 @@ class ThePoserPlugin extends MantisPlugin {
 	    'companyUrl' => plugin_page('config'),
 	    'companyLogo' => '',
 	    'companyTinyLogo' => '',
+	    'customCss' => '',
         );
     }
     

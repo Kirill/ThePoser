@@ -3,6 +3,7 @@ $headerHeightOptions = array('Default', 'Small', 'Tiny');
 $skinOptions = array('poser Default', 'Flat','MantisMan');
 $currentHeader = plugin_config_get('headerHeight');
 $currentSkin = plugin_config_get('skin');
+$customCss = plugin_config_get('customCss');
 html_page_top();
 ThePoserPlugin::showImagickWarning();
 ?>
@@ -41,7 +42,7 @@ ThePoserPlugin::showImagickWarning();
 	<label>Your company name</label>
 	<input type="text" name="companyName" value="<?php echo plugin_config_get('companyName'); ?>"/><br/>
 	
-	<label>Your company website<label>
+	<label>Your company website</label>
 	<input type="text" name="companyUrl" value="<?php echo plugin_config_get('companyUrl');?>"/><br/>
 	
 	<label>Custom logo</label>
@@ -61,6 +62,9 @@ ThePoserPlugin::showImagickWarning();
 	}
 	?>
 	<input type="file" name="customTinyLogo"/><br/>
+	
+	<label for="customCss">Custom CSS rules</label><br/>
+	<textarea name="customCss"><?php echo $customCss; ?></textarea><br/>
 	
 	<label><input type="checkbox" name="reset_logo"/> Remove Logo</label><br/>
 	<label><input type="checkbox" name="reset_tiny_logo"/> Remove Tiny Logo</label><br/>

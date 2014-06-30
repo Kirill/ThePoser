@@ -2,7 +2,9 @@ Features
 --------
 1. Overall changes of mantis look
 2. Custom company logo, company name and link to main website (will open in new window)
-3. 3 different styles for header - Default (big logos), Small, And Tiny (see screenshots below)
+3. Skins
+4. 3 different styles for header - Default (big logos), Small, And Tiny (see screenshots below)
+5. Custom CSS rules
 
 For more info, screenshots of skins, etc. visit official plugin homepage 
 [http://agavestorm.com/the-poser-for-mantis/](http://agavestorm.com/the-poser-for-mantis/)
