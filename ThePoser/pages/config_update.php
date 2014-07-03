@@ -21,6 +21,7 @@ if ( $f_reset ) {
     plugin_config_delete('companyLogo');
     plugin_config_delete('companyTinyLogo');
     plugin_config_delete('customCss');
+    plugin_config_delete('showCompanyLogo');
 } else {
     if ( in_array($f_header,array(0,1,2))) {
         plugin_config_set( 'headerHeight', $f_header );
@@ -30,6 +31,8 @@ if ( $f_reset ) {
     }
     plugin_config_set('companyName', strip_tags(gpc_get_string('companyName')));
     plugin_config_set('companyUrl', strip_tags(gpc_get_string('companyUrl')));
+    
+    plugin_config_set('showCompanyLogo', gpc_get_bool('showCompanyLogo'));
     
     try {
     plugin_config_set('companyLogo',

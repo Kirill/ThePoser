@@ -4,6 +4,8 @@ $skinOptions = array('poser Default', 'Flat','MantisMan');
 $currentHeader = plugin_config_get('headerHeight');
 $currentSkin = plugin_config_get('skin');
 $customCss = plugin_config_get('customCss');
+$showCompanyLogo = plugin_config_get('showCompanyLogo');
+
 html_page_top();
 ThePoserPlugin::showImagickWarning();
 ?>
@@ -38,6 +40,15 @@ ThePoserPlugin::showImagickWarning();
 		}?>
 	</select>
 	<br/>
+	
+	<label>Show company logo</label>
+	<input type="checkbox" name="showCompanyLogo" 
+	       <?php
+	       if($showCompanyLogo) {
+		       ?> checked="yes"<?php
+	       }
+	       ?>
+	       /><br/>
 	
 	<label>Your company name</label>
 	<input type="text" name="companyName" value="<?php echo plugin_config_get('companyName'); ?>"/><br/>

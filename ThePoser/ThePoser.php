@@ -52,7 +52,7 @@ class ThePoserPlugin extends MantisPlugin {
 	if(plugin_config_get('skin') == 2) {
 	    $this->theCity();
 	}
-	if(plugin_config_get('headerHeight') != '2') {
+	if(plugin_config_get('headerHeight') != '2' && plugin_config_get('showCompanyLogo')) {
 		if(!auth_is_user_authenticated()) {
 			$classes .= ' poserNoAuth';
 		}
@@ -98,12 +98,14 @@ class ThePoserPlugin extends MantisPlugin {
 		</a>
 		
 	    </span>
-		<span class="tinyheader-right">
-			<a href="<?php echo plugin_config_get('companyUrl');?>" title="<?php echo plugin_config_get('companyName'); ?>" target="_blank">
-				<img src="<?php echo $imgdata;?>" alt="<?php echo plugin_config_get('companyName'); ?>"/>
-			</a>
-		</span>
-	<?php
+		<?php if(plugin_config_get('showCompanyLogo')) { ?>
+			<span class="tinyheader-right">
+				<a href="<?php echo plugin_config_get('companyUrl');?>" title="<?php echo plugin_config_get('companyName'); ?>" target="_blank">
+					<img src="<?php echo $imgdata;?>" alt="<?php echo plugin_config_get('companyName'); ?>"/>
+				</a>
+			</span>
+		<?php 
+		}
     }
     
     function initlook($p_event) {
@@ -120,7 +122,6 @@ class ThePoserPlugin extends MantisPlugin {
     function config() {
         return array(
             'customLogo' => '',
-	    'skin' => 0,
 	    'headerHeight' => 0,// default=0, small=1, tiny=2
 	    'companyName' => 'setup you company name and logo',
 	    'companyUrl' => plugin_page('config'),
@@ -128,6 +129,7 @@ class ThePoserPlugin extends MantisPlugin {
 	    'companyTinyLogo' => '',
 	    'customCss' => '',
 	    'skin'=>0,
+	    'showCompanyLogo' => true,
         );
     }
     
