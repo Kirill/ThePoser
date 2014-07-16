@@ -1,4 +1,5 @@
 <?php
+require_once 'core/http_api.php';
 
 class ThePoserPlugin extends MantisPlugin {
     function register() {

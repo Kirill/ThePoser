@@ -1,5 +1,7 @@
 <?php
 form_security_validate( 'plugin_Example_config_update' );
+auth_reauthenticate( );
+access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 
 $f_header = gpc_get_string( 'headerHeight' );
 $f_skin = gpc_get_string( 'skin' );

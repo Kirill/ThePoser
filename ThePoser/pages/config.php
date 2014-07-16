@@ -1,4 +1,7 @@
 <?php
+auth_reauthenticate( );
+access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
+
 $headerHeightOptions = array('Default', 'Small', 'Tiny');
 $skinOptions = array('poser Default', 'Flat','MantisMan');
 $currentHeader = plugin_config_get('headerHeight');
