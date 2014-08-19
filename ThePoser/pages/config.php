@@ -16,7 +16,7 @@ ThePoserPlugin::showImagickWarning();
 <form action="<?php echo plugin_page( 'config_update' ) ?>" method="post" enctype="multipart/form-data">
 <?php echo form_security_field( 'plugin_Example_config_update' ) ?>
 
-	<label>Header style</label>
+	<h2>Header style</h2>
 	<select name="headerHeight">
 		<?php foreach($headerHeightOptions as $key=>$value) {
 			?>
@@ -30,21 +30,29 @@ ThePoserPlugin::showImagickWarning();
 	</select>
 	<br/>
 	
-	<label>Skin</label>
-	<select name="skin">
-		<?php foreach($skinOptions as $key=>$value) {
-			?>
-		<option value="<?php echo $key; ?>"
-			<?php if($key == $currentSkin) {
-				?> selected="yes"<?php
-			} ?>
-			><?php echo $value; ?></option>
-			<?php
-		}?>
-	</select>
+	<h2>Skin</h2>
+	
+	<div class="skins">
+		<?php foreach($skinOptions as $key=>$value) { ?>
+			<div class="skin">
+				<h3>
+				<input type="radio" name="skin" value="<?php echo $key; ?>"
+				       <?php if($key == $currentSkin) {
+						?> checked="yes"<?php
+					} ?>
+				       />
+				<?php echo $value; ?>
+				</h3>
+				<div class="skin-thumb">
+					<img src="<?php echo plugin_file( 'img/skin-'.$key.'.png' );?>"/>
+				</div>
+			</div>
+		<?php  } ?>
+		<div class="clear"></div>
+	</div>
 	<br/>
 	
-	<label>Show company logo</label>
+	<h2>Show company logo</h2>
 	<input type="checkbox" name="showCompanyLogo" 
 	       <?php
 	       if($showCompanyLogo) {
@@ -53,13 +61,13 @@ ThePoserPlugin::showImagickWarning();
 	       ?>
 	       /><br/>
 	
-	<label>Your company name</label>
+	<h2>Your company name</h2>
 	<input type="text" name="companyName" value="<?php echo plugin_config_get('companyName'); ?>"/><br/>
 	
-	<label>Your company website</label>
+	<h2>Your company website</h2>
 	<input type="text" name="companyUrl" value="<?php echo plugin_config_get('companyUrl');?>"/><br/>
 	
-	<label>Custom logo</label>
+	<h2>Custom logo</h2>
 	<?php
 	$imgdata = plugin_config_get('companyLogo');
 	if(!empty($imgdata)) {
@@ -68,7 +76,7 @@ ThePoserPlugin::showImagickWarning();
 	?>
 	<input type="file" name="customLogo"/><br/>
 	
-	<label>Custom logo for tiny view (16px*16px)</label>
+	<h2>Custom logo for tiny view (16px*16px)</h2>
 	<?php
 	$imgdata = plugin_config_get('companyTinyLogo');
 	if(!empty($imgdata)) {
@@ -77,14 +85,14 @@ ThePoserPlugin::showImagickWarning();
 	?>
 	<input type="file" name="customTinyLogo"/><br/>
 	
-	<label for="customCss">Custom CSS rules</label><br/>
+	<h2 for="customCss">Custom CSS rules</h2><br/>
 	<textarea name="customCss"><?php echo $customCss; ?></textarea><br/>
 	
 	<label><input type="checkbox" name="reset_logo"/> Remove Logo</label><br/>
 	<label><input type="checkbox" name="reset_tiny_logo"/> Remove Tiny Logo</label><br/>
 <label><input type="checkbox" name="reset"/> Reset</label>
 <br/>
-<input type="submit"/>
+<input type="submit" value="Apply Changes"/>
 
 </form>
 </div>

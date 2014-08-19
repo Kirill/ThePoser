@@ -124,3 +124,20 @@ div.poserWarning {
     max-width: 600px;
     height: 300px;
 }
+.poserConfig .skin {
+    float: left;
+}
+.poserConfig .clear {
+    clear: both;
+}
+.poserConfig h3 {
+    margin-top: 0;
+}
+.poserConfig h2 {
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+.poserConfig input[type='submit'] {
+    margin-top: 16px;
+    padding: 6px;
+}

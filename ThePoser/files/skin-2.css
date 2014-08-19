@@ -155,6 +155,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     top: 80px;
     bottom: 0;
     overflow: hidden;
+    /*position: fixed;*/
 }
 .building-container.poserTinyHeader {
     top: 5px;

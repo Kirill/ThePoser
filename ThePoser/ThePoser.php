@@ -7,7 +7,7 @@ class ThePoserPlugin extends MantisPlugin {
         $this->description = 'So you can explain to your boss why Mantis is better. (Look matters after all)';    # Short description of the plugin
         $this->page = 'config';           # Default plugin page
 
-        $this->version = '1.0';     # Plugin version string
+        $this->version = '1.1';     # Plugin version string
         $this->requires = array(    # Plugin dependencies, array of basename => version pairs
             'MantisCore' => '1.2.0',  #   Should always depend on an appropriate version of MantisBT
             );
@@ -177,7 +177,7 @@ class ThePoserPlugin extends MantisPlugin {
 		}
 	    $buildings = $_SESSION['buildings'];
 	    if(empty($buildings)) {
-		$countBuildings = 800;
+		$countBuildings = 1500;
 		for($i=0;$i<$countBuildings;$i++) {
 			$buildings[] = array(
 			    'height' => rand(10,100),
