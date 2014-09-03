@@ -1,5 +1,5 @@
 <?php
-require_once 'core/http_api.php';
+require_once dirname( dirname( dirname( FILE ) ) ).DIRECTORY_SEPARATOR.'core/http_api.php';
 
 class ThePoserPlugin extends MantisPlugin {
     function register() {
@@ -18,7 +18,6 @@ class ThePoserPlugin extends MantisPlugin {
     }
     
     function hooks() {
-//        throw new Exception();
         return array(
             'EVENT_LAYOUT_RESOURCES' => 'initlook',
 	    'EVENT_MENU_MAIN_FRONT' => 'beforeMenu',
