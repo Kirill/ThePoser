@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname( dirname( dirname( FILE ) ) ).DIRECTORY_SEPARATOR.'core/http_api.php';
 
 class ThePoserPlugin extends MantisPlugin {
@@ -35,7 +36,7 @@ class ThePoserPlugin extends MantisPlugin {
 			header( 'X-Frame-Options: DENY' );
 		$t_avatar_img_allow = '';
 		if ( config_get_global( 'show_avatar' ) ) {
-			if ( http_is_protocol_https() ) {
+			if ( $_SERVER['REQUEST_SCHEME'] == 'https' ) {
 				$t_avatar_img_allow = "; img-src 'self' https://secure.gravatar.com:443";
 			} else {
 				$t_avatar_img_allow = "; img-src 'self' http://www.gravatar.com:80";
