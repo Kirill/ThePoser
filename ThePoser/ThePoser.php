@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname( dirname( dirname( FILE ) ) ).DIRECTORY_SEPARATOR.'core/http_api.php';
+require_once dirname( dirname( dirname( FILE ) ) ).DIRECTORY_SEPARATOR.'core/http_api.php'; //
 
 class ThePoserPlugin extends MantisPlugin {
     function register() {
