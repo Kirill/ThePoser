@@ -1,5 +1,5 @@
 body {
-    background: url(plugins/ThePoser/files/img/bgmain.png);
+    background: url(plugin_file.php?file=ThePoser/img/bgmain.png);
     color: #333;
 }
 
